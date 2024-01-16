@@ -1,0 +1,27 @@
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    margin: auto;
+}
+
+.center img {  
+    margin-top: 20px;
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+    /* 保持图片比例并裁剪 */
+}
+
+.center span {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.center span button.active {
+    background-color: #3498db;
+    color: #fff;
+}

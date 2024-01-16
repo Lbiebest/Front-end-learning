@@ -1,0 +1,34 @@
+/* 元素选择器  优先级: 1*/
+h1 {
+    color: #4D4F53;
+}
+
+/* ID选择器 优先级: 3*/
+/* #time{
+    color: #97999c;
+} */
+
+/* 类选择器  优先级: 2*/
+.cls {
+    color: #97999c;
+}
+
+a {
+    color: black;
+    text-decoration-line: none;
+}
+
+p {
+    text-indent: 35px;
+    line-height: 30px;
+}
+
+p.cls {
+    color: black;
+    text-align: right;
+}
+
+#center {
+    width: 70%;
+    margin:  auto;
+}

@@ -1,0 +1,23 @@
+#center {
+    width: 70%;
+    padding-top: 10%;
+    margin: auto;
+}
+
+.center {
+    /*边框合并*/
+    border-collapse: collapse;
+    width: auto;
+}
+
+.center th, .center td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+.center img {
+    max-width: 100%;
+    /* 使图像适应其父元素的宽度 */
+    height: auto;
+    /* 保持图像的纵横比 */
+}
