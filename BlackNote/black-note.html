@@ -35,7 +35,8 @@
       </ul>
     </section>
     <!-- 统计和清空 -->
-    <footer class="footer">
+    <!-- 添加 v-if or v-show 控制底部统计组件的显示 -->
+    <footer v-if="items.length != 0" class="footer">
       <span class="todo-count">
         <strong> {{ items.length }} </strong> items left
       </span>

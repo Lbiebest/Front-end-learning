@@ -1,4 +1,4 @@
-import { createApp, ref } from "https://cdn.jsdelivr.net/npm/vue@3/dist/vue.esm-browser.js";
+import { createApp, ref, nextTick } from "https://cdn.jsdelivr.net/npm/vue@3/dist/vue.esm-browser.js";
 const todoapp = createApp({
     setup() {
         const list = [
@@ -23,8 +23,9 @@ const todoapp = createApp({
 
         const clear = () => {
             // 删除所有元素
-            items.value = [];
+            items.value = [];  
         };
+        
 
         return {
             items, inputValue,
