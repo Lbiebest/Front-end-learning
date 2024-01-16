@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./css/test.css"> 
+    </head>
+
+    <body>
+        <div id="app">
+            <button @click="reduceButton">-</button>
+            <span> {{ msg }} </span> 
+            <button @click="addButton">+</button>
+        </div>
+        <script type="module">
+        import { Vue } from "./js/main.js";
+        const app = Vue.createApp({
+            setup() {
+                const msg = Vue.ref("0");
+
+                const addButton = function () { 
+                    if(msg.value < 10){
+                        msg.value = Number(msg.value) + 1;
+                    }else{
+                        alert("到达最大值");
+                    }
+                };
+
+                const reduceButton = function () {
+                    if(msg.value > 0){
+                        msg.value = Number(msg.value) - 1;
+                    } else {
+                        alert("到达最小值");
+                    }
+                };
+
+                return {
+                    msg,
+                    addButton,
+                    reduceButton
+                };
+            }
+        });
+        app.mount("#app");
+    </script>
+    </body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <h2 v-text="food" @click="changeFood"></h2>
+            <input type="button" value="v-on:click" v-on:click="handle">
+            <input type="button" value="@click" @click="handle">
+            <input type="button" value="@dblclick" @dblclick="handle">
+        </div>
+        <div>
+            <h2><input type="button" value="CLICK" @click="dolt(123,'b')"></h2>
+            <h2><input type="text" @keyup.enter="say"></h2>
+        </div>
+    </div>
+
+    <script type="module">
+        import { createApp, ref } from "https://cdn.jsdelivr.net/npm/vue@3/dist/vue.esm-browser.js";
+
+        const app = createApp({
+            setup() {
+                const food = ref("西兰花");
+
+                const changeFood = function () {
+                    console.log(food.value);
+                    food.value = "番茄炒蛋";
+                };
+
+                const handle = function (event) {
+                    window.alert(event.target.value + "被按下");
+                };
+
+                const dolt = function (a, b) {
+                    console.log(a);
+                    console.log(b);
+                };
+
+                const say = function (event) {
+                    console.log("输入内容为：" + event.target.value);
+                };
+
+                return {
+                    food,
+                    changeFood, handle, dolt, say
+                };
+            },
+        });
+
+        app.mount("#app");
+    </script>
+</body>
+</html>

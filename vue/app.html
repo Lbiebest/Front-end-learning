@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>vue-project</title>
+        <!-- 开发环境使用 Vue 开发版本 -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+        <!-- 生产环境使用 Vue 生产版本 -->
+        <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+    </head>
+    <body>
+        <div id="app">
+            {{ message }}
+        </div>
+    </body>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    message: "Hello Vue"
+                }
+            },
+        })
+    </script>
+</html>

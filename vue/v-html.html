@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <h1 v-text="msg"></h1>
+            <h2 v-html="html"></h2> 
+        </div>
+        <script type="module">
+            import * as Vue from 'https://cdn.jsdelivr.net/npm/vue@3/dist/vue.esm-browser.js';
+            const app = Vue.createApp({
+                setup() {
+                    const msg = Vue.ref("Content");
+                    const html = Vue.ref("<a href='https://cn.vuejs.org/guide/quick-start.html' style='display: contents;align-content: center;color: red;'>TEST</a>")
+                    return{
+                        msg,html
+                    }
+                },
+            });
+            app.mount("#app");
+        </script>
+    </body>
+</html>

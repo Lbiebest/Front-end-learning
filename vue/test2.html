@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app {
+        display: flex;
+        justify-content: space-between;
+        margin: 10% auto;
+        position: relative; /* 添加相对定位 */
+        }
+
+        .img {
+            position: relative; /* 添加相对定位 */
+        }
+
+        .img img {
+            width: 100%;
+            height: auto;
+        }
+
+        .prev-button,
+        .next-button {
+            background-color: aqua;
+            color: red;
+            position: absolute; /* 添加绝对定位 */
+            top: 0; /* 上侧对齐 */
+        }
+
+        .prev-button {
+            left: 0; /* 左侧对齐 */
+        }
+
+        .next-button {
+            right: 0; /* 右侧对齐 */
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="img">
+            <img :src="currentImage">
+            <a href="#" @click="prevImage" class="prev-button">上一张</a>
+            <a href="#" @click="nextImage" class="next-button">下一张</a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { Vue } from "./js/main.js";
+        const app = Vue.createApp({
+            setup() {
+                const images = [
+                    "../resource/p (1).jpg",
+                    "../resource/p (2).jpg",
+                    "../resource/p (3).jpg",
+                    "../resource/p (4).jpg",
+                    "../resource/p (5).jpg"
+                ];
+                let index = 0;
+                const prevImage = function () {
+                    index = (index - 1 + images.length) % images.length;
+                    currentImage.value = images[index];
+                };
+                const nextImage = function () {
+                    index = (index + 1) % images.length;
+                    currentImage.value = images[index];
+                };
+                const currentImage = Vue.ref(images[index]);
+                return {
+                    currentImage,
+                    prevImage,
+                    nextImage
+                };
+            }
+        });
+        app.mount("#app");
+    </script>
+</body>
+
+</html>

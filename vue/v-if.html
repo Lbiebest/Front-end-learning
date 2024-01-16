@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title> 
+    </head>
+    <body>
+        <div id="app"> 
+            <!-- v-if 模拟DOM
+            v-show 操作innerHTML -->
+            <input type="button" value="change" @click="toggleIsShow">
+            <p v-if="isShow">test</p>
+            <p v-show="isShow">test</p>
+        </div>
+
+        <script type="module">
+        import {Vue} from './js/main.js';
+        const app = Vue.createApp({
+            setup() {
+                const isShow  = Vue.ref(false);
+                const toggleIsShow = function(){
+                    isShow.value = !isShow.value;
+                };
+                return {
+                    isShow,toggleIsShow
+                }
+            }
+        });
+        app.mount("#app");
+        </script>
+    </body>
+</html>

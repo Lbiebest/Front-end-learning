@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>vue-data</title>
+        <link rel="icon" href="../resource/app.svg">
+    </head>
+    <body>
+        <div id="app">
+            <p> {{ msg}} </p>
+            <p> {{ school}} </p>
+            <p> {{ school.name}} {{ school.address}} </p>
+            <ul>
+                <li> {{ list[0]}} </li>
+                <li> {{ list[1]}} </li>
+                <li> {{ list[2]}} </li>
+                <li> {{ list[3]}} </li>
+            </ul>
+        </div>
+
+        <script type="module">
+            import * as Vue from 'https://cdn.jsdelivr.net/npm/vue@3/dist/vue.esm-browser.js';
+            const app =  Vue.createApp({
+                setup() {
+                    const msg = Vue.ref("Title Messages");
+                    const school = Vue.ref({
+                        name: "Tom",
+                        address: "China"
+                    });
+                    const list = Vue.ref(["A", "B", "C", "D"]);
+                    return {
+                        msg, school, list
+                    };
+                } 
+            });
+            app.mount("#app");
+        </script>
+    </body>
+</html>

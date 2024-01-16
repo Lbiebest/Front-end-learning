@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" href="./css/v-for.css">
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(it, index) in arr" :title="it">
+                index: {{ index }} value: {{ it }}
+            </li>
+        </ul>
+        <button @click="add">添加</button>
+        <button @click="remove">删除</button><br> 
+        <h2 v-for="(item, index) in objArr" :key="index" class="title"> 
+            {{ item.name }}
+        </h2>
+    </div>
+
+    <script type="module">
+        import { createApp, ref } from "https://cdn.jsdelivr.net/npm/vue@3/dist/vue.esm-browser.js";
+        const app = createApp({
+            setup() {
+                const arr = ref([1, 2, 3, 4, 5]);
+                const objArr = ref([
+                    { name: "Tom" },
+                    { name: "jack" },
+                    { name: "rose" },
+                ]);
+                const add = function(){
+                    objArr.value.push({name:"番茄炒蛋"})
+                };
+                const remove = function(){
+                    objArr.value.shift();
+                };
+                return {
+                    arr, objArr,
+                    add,remove
+                };
+            }
+        });
+        app.mount("#app");
+    </script>
+</body>
+
+</html>

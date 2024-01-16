@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 插值表达式 -->
+        <!-- {{ var_name }} -->
+        <div id="app">
+            <h1 v-text="msg+'!'"></h1>
+            <h2 v-text="info"></h2>
+            <h3> {{ info }} </h3>
+        </div>
+        <script type="module">
+            import * as Vue from 'https://cdn.jsdelivr.net/npm/vue@3/dist/vue.esm-browser.js';
+            const app = Vue.createApp({
+                setup() {
+                    const msg = Vue.ref("Test Messages");
+                    const info = Vue.ref("nature messages!!!");
+                    return {
+                        msg,info
+                    }
+                }, 
+            });
+            app.mount("#app")
+        </script>
+
+    </body>
+</html>

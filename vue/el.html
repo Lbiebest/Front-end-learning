@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="icon" href="../resource/app.svg">
+        <script type="module">
+        import { createApp, ref, h } from 'https://cdn.jsdelivr.net/npm/vue@3/dist/vue.esm-browser.js';
+
+        const app = createApp({
+            setup() {
+                const message = ref('TEST');
+                return { message };
+            }
+        }); 
+        app.mount('#app');
+    </script>
+    </head>
+    <body>
+        <div id="app">
+            {{ message}}
+            <span>
+                {{ message}}
+            </span>
+        </div>
+    </body>
+</html>

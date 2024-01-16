@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #app{ 
+                display: flex;
+                justify-content: center;
+                margin: auto;
+            }
+            #app img{
+                width: 100%;
+            }
+            .active{
+                border: 10px solid red;
+                width: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <!-- <img :src="imgSrc" :title="imgTitle"
+                :class="isActive ? 'active' : ''" @click="change"> -->
+            <img :src="imgSrc" :title="imgTitle"
+                :class="{active:isActive}" @click="change">
+        </div>
+
+        <script type="module">
+        import {Vue} from './js/main.js';
+        const app = Vue.createApp({
+            setup() {
+                const imgSrc = Vue.ref("../resource/p (4).jpg");
+                const imgTitle  = Vue.ref("p (4).jpg");
+                const isActive = Vue.ref(false);
+                
+                const change = function(){
+                    isActive.value = !isActive.value;
+                }
+
+                return {
+                    imgSrc,imgTitle,isActive,
+                    change 
+                }
+            }
+        });
+        app.mount("#app");
+        </script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #app{
+                display: flex;
+                justify-content: center;
+                flex-direction: column;  
+            }
+            #app img{  
+                padding: 10px;
+                width: 100%; 
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <img src="../resource/p (1).jpg" v-show="true"> 
+            <img src="../resource/p (2).jpg" v-show="isShow" @click="change">
+            <img src="../resource/p (3).jpg" v-show="age > 10">
+        </div>
+
+        <script type="module">
+        import {Vue} from './js/main.js';
+        const app = Vue.createApp({
+            setup() {
+                const isShow = Vue.ref(true);
+
+                const change = function () {
+                    isShow.value = false;
+                }
+
+                const age = 11;
+
+                return {
+                    isShow, age, change
+                };
+            }
+        });
+        app.mount("#app");
+        </script>
+    </body>
+</html>
