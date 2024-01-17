@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <script src="/lib/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="joke" class="get-joke">
+        <input type="button" value="image" class="get-img">
+    </div>
+
+    <!-- 新增用于显示笑话的元素 -->
+    <div id="joke-container"></div>
+
+    <!-- 新增用于显示图片的元素 -->
+    <div id="img-container"></div> 
+
+    <script>
+        document.querySelector(".get-joke").onclick = () => {
+            axios.get("https://api.vvhan.com/api/joke?type=json")
+                .then((response) => {
+                    console.log(response);
+                    displayJoke(response.data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        };
+
+        document.querySelector(".get-img").onclick = () => {
+            axios.get("https://api.vvhan.com/api/acgimg?type=json") 
+                .then((response) => {
+                    console.log(response);
+                    displayImage(response.data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function displayImage(imageData) {
+            // 获取容器元素
+            const imgContainer = document.getElementById('img-container');
+
+            const img = document.createElement('img');
+            img.src = imageData.imgurl;
+            img.style.width = "100%";
+
+            imgContainer.appendChild(img);
+        }
+
+        function displayJoke(jokeData) {
+            // 获取容器元素
+            const jokeContainer = document.getElementById('joke-container');
+
+            const jokeTitle = document.createElement('h2');
+            jokeTitle.textContent = jokeData.title;
+
+            const jokeContent = document.createElement("p");
+            jokeContent.textContent = jokeData.joke;
+
+            jokeContainer.appendChild(jokeTitle);
+            jokeContainer.appendChild(jokeContent);
+        }
+    </script>
+</body>
+
+</html>

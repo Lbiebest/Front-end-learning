@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <div id="title">
+            <h1>天知道</h1>
+        </div>
+        <div id="search-block">
+            <input type="text" name="输入框" v-model="city" @keyup.enter="searchWeather(city)" id="input">
+            <button type="button" @click="searchWeather(city)">搜索</button>
+        </div>
+        <div id="city-list">
+            <ul v-for="(item, index) in items" :key="index">
+                <li @click="searchWeather(item)"> {{ item }} </li>
+            </ul>
+        </div>
+        <div id="container">
+
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="./js/index.js" type="module"></script>
+</body>
+
+</html>

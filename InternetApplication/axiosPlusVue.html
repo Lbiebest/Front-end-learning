@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="获取笑话" class="get-joke" @click="getJoke">
+    </div>
+
+    <div id="jokeContainer">
+    </div>
+
+    <script type="module" >
+        import { createApp, ref } from "https://cdn.jsdelivr.net/npm/vue@3/dist/vue.esm-browser.js";
+        const app = createApp({
+            setup() {
+                const url = "https://api.vvhan.com/api/joke?type=json";
+                const jokeContainer = ref(null);
+
+                const getJoke = () => {
+                    axios.get(url).then((response) => {
+                        // console.log(response);
+                        displayJoke(response.data);
+                    }).catch((error) => {
+                        console.log(error);
+                    });
+                };
+
+                const displayJoke = (jokeData) => {
+                    // 检查是否为null
+                    if (jokeContainer.value === null) {
+                        jokeContainer.value = document.getElementById('jokeContainer');
+                    }
+
+                    // 创建h1元素
+                    const title = document.createElement("h1");
+                    title.textContent = jokeData.title;
+
+                    // 创建p元素
+                    const content = document.createElement("p");
+                    content.textContent = jokeData.joke;
+
+                    // 将元素添加到笑话容器中
+                    jokeContainer.value.appendChild(title);
+                    jokeContainer.value.appendChild(content);
+                };
+
+                return {
+                    jokeContainer,
+                    getJoke
+                };
+            }
+        });
+        app.mount("#app");
+    </script>
+</body>
+
+</html>
