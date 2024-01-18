@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mounted</title>
+    <link rel="icon" href="https://lbiebest.github.io/img/head.png">
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <script type="module">
+        import { createApp, ref, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted }
+            from "https://cdn.jsdelivr.net/npm/vue@3/dist/vue.esm-browser.js";
+
+        const app = createApp({
+            setup() {
+                // 在 setup 函数中使用 onMounted 替代 mounted
+                onMounted(() => {
+                    console.log("挂载完成");
+                });
+                // 在 setup 函数中使用 onBeforeUpdate 替代 beforeUpdate
+                onBeforeUpdate(() => {
+                    console.log("更新前");
+                });
+                // 在 setup 函数中使用 onUpdated 替代 updated
+                onUpdated(() => {
+                    console.log("更新中");
+                });
+                // 在 setup 函数中使用 onBeforeUnmount 替代 beforeDestroy
+                onBeforeUnmount(() => {
+                    console.log("销毁前");
+                });
+                // 在 setup 函数中使用 onUnmounted 替代 destroyed
+                onUnmounted(() => {
+                    console.log("销毁后");
+                });
+                return {};
+            },
+        });
+        app.mount("#app");
+    </script>
+</body>
+
+</html>
