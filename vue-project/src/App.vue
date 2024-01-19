@@ -1,20 +1,25 @@
+<!-- App.vue -->
+
 <template>
   <div>
-    <h1> {{ msg }} </h1>
+    <h1>{{ msg }}</h1>
+    <ElementView></ElementView>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      msg: "hello"
-    }
-  },
-  methods: {
+import { ref } from "vue";
+import ElementView from "./views/element/ElementView.vue"; // 大写开头的文件名
 
+export default {
+  components: { ElementView },
+  setup() {
+    const msg = ref("Element Button");
+    return {
+      msg,
+    };
   },
-}
+};
 </script>
 
-<style></style>
+<style scoped></style>
