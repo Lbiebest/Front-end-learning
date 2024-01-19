@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+    <link rel="icon" href="https://lbiebest.github.io/img/head.png">
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="获取数据" @click="getData">
+        <div id="content" style="font-size: 20px;">{{ responseData }}</div>
+    </div>
+
+    <script type="module">
+        // 引入Vue库
+        import { createApp, ref } from "https://cdn.jsdelivr.net/npm/vue@3/dist/vue.esm-browser.js";
+
+        const app = createApp({
+            setup() {
+                // 使用ref创建响应式数据
+                const responseData = ref('');
+
+                // 创建XMLHttpRequest对象
+                const xmlHttpRequest = new XMLHttpRequest();
+
+                // 定义获取数据的函数
+                const getData = () => {
+                    // 设置XMLHttpRequest请求的方法和URL
+                    xmlHttpRequest.open('GET', 'https://api.vvhan.com/api/ian?cl=ac');
+
+                    // 监听XMLHttpRequest状态变化
+                    xmlHttpRequest.onreadystatechange = () => {
+                        // 当请求完成且成功时
+                        if (xmlHttpRequest.readyState === 4 && xmlHttpRequest.status === 200) {
+                            // 更新响应式数据
+                            responseData.value = xmlHttpRequest.responseText;
+                        }
+                    };
+
+                    // 发送XMLHttpRequest请求
+                    xmlHttpRequest.send();
+                };
+
+                return {
+                    responseData,
+                    getData,
+                };
+            }
+        });
+        app.mount("#app");
+    </script>
+</body>
+
+</html>

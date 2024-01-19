@@ -20,7 +20,10 @@ app.use((req, res, next) => {
 // 处理前端请求，并转发到目标 API
 // 搜索api
 app.get('/searchMusic', async (req, res) => {
+    // post 请求使用body，
+    // get 请求使用query
     const { name } = req.query;
+    // const { name } = req.body;
     try {
         // const response = await axios.get(`https://autumnfish.cn/search?keywords=${name}`);
         const response = await axios.get(`https://api.paugram.com/netease/?id=${name}`);

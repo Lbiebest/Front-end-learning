@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios</title>
+    <link rel="icon" href="https://lbiebest.github.io/img/head.png">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="获取数据" @click="getData">
+        <div style="font-size: 50px;">{{ data }}</div>
+
+    </div>
+
+    <script type="module">
+        // import axios from 'https://unpkg.com/axios/dist/axios.min.js';
+        import { createApp, ref } from "https://cdn.jsdelivr.net/npm/vue@3/dist/vue.esm-browser.js";
+
+        const app = createApp({
+            setup() {
+                const data = ref('');
+                // 相比.then()/.catch()的方式，async/await的方式
+                // 可读性更强，错误处理更方便，保证顺序执行，拥有更好的错误栈
+                const getData = async () => {
+                    try {
+                        const response = await axios.get(`https://api.vvhan.com/api/ian?cl=ac`);
+                        data.value = response.data;
+                    } catch (error) {
+                        console.log(error);
+                    }
+                };
+                return {
+                    data,
+                    getData,
+                };
+            }
+        });
+        app.mount("#app");
+    </script>
+</body>
+
+</html>

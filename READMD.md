@@ -184,3 +184,67 @@ const app = createApp({
 ## 网络应用
 
 ### **axios**
+
+```javascript
+// 相比.then()/.catch()的方式，async/await的方式
+// 可读性更强，错误处理更方便，保证顺序执行，拥有更好的错误栈
+const getData = async () => {
+    try {
+        const response = await axios.get(`url`);
+        // 实际操作
+    } catch (error) {
+        // 异常处理
+        console.log(error);
+    }
+};
+```
+
+
+## 前端工程化
+
+    在企业级的前端项目开发中，把前端开发所需的工具、技术、流程、经验等进行规范化、标准化
+
+1. 需求分析
+2. 接口定义（api接口文档）
+3. 前后端开发
+4. 测试（前端，后端）
+5. 前后端联调测试
+
+
+```mermaid
+graph TD;
+  subgraph 需求分析
+    A[需求收集] --> B[需求分析]
+    B --> C[编写需求文档]
+  end
+  
+  subgraph 接口定义
+    D[设计API接口] --> E[编写API文档]
+  end
+
+  subgraph 前后端开发
+    F[前端开发] --> G[编写代码]
+    H[后端开发] --> I[编写代码]
+  end
+
+  subgraph 测试
+    J[前端测试] --> K[执行测试用例]
+    L[后端测试] --> M[执行测试用例]
+  end
+
+  subgraph 前后端联调测试
+    N[联调测试] --> O[解决问题]
+  end
+
+  A --> F
+  B --> F
+  C --> F
+  E --> H
+  G --> J
+  I --> L
+  J --> N
+  L --> N
+  N --> O
+```
+
+采用`yapi`接口管理平台
